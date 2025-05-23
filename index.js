@@ -1,0 +1,12 @@
+import{a as p,S as m,i as n}from"./assets/vendor-Bz4lgVUE.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))i(t);new MutationObserver(t=>{for(const r of t)if(r.type==="childList")for(const a of r.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&i(a)}).observe(document,{childList:!0,subtree:!0});function e(t){const r={};return t.integrity&&(r.integrity=t.integrity),t.referrerPolicy&&(r.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?r.credentials="include":t.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(t){if(t.ep)return;t.ep=!0;const r=e(t);fetch(t.href,r)}})();const f="https://pixabay.com/api/",d="50322129-1fa2d79651afdc56a0de6c955";function y(s){const o={key:d,q:s,image_type:"photo",orientation:"horizontal",safesearch:!0};return p.get(f,{params:o}).then(e=>e.data).catch(e=>{throw console.error("Error fetching images:",e),e})}const c=document.querySelector(".gallery"),u=document.querySelector(".loader"),g=new m(".gallery a",{captionsData:"alt",captionDelay:250});function h(s){const o=s.map(e=>`<li class="gallery-item">
+        <a href="${e.largeImageURL}" class="gallery-link">
+          <img class="gallery-img" src="${e.webformatURL}" alt="${e.tags}"/>
+        </a>
+        <div class="gallery-stats">
+          <p>Likes <span>${e.likes}</span></p>
+          <p>Views <span>${e.views}</span></p>
+          <p>Comments <span>${e.comments}</span></p>
+          <p>Downloads <span>${e.downloads}</span></p>
+        </div>
+      </li>`).join("");c.innerHTML=o,g.refresh()}function L(){c.innerHTML=""}function v(){u.classList.add("is-active")}function w(){u.classList.remove("is-active")}const l=document.querySelector("form.form"),E=document.querySelector('input[name="search-text"]');l.addEventListener("submit",s=>{s.preventDefault();const o=E.value.trim();if(!o){n.error({title:"Error",message:"Please enter a search query",position:"topRight"});return}v(),L(),y(o).then(e=>{if(e.hits.length===0){n.error({title:"No results",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"});return}h(e.hits)}).catch(e=>{n.error({title:"Error",message:"Something went wrong. Please try again later.",position:"topRight"}),console.error(e)}).finally(()=>{w(),l.reset()})});
+//# sourceMappingURL=index.js.map
