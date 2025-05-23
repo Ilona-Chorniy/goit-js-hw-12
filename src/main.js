@@ -76,6 +76,7 @@ formElem.addEventListener('submit', async event => {
     console.error(error);
   } finally {
     hideLoader();
+    formElem.reset();
   }
 });
 
