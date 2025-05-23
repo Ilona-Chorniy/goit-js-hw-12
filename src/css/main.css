@@ -151,6 +151,16 @@ button:hover {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
+.load-more {
+  display: block;
+  margin: 20px auto;
+  width: auto;
+}
+
+.load-more.hidden {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .gallery-item {
     width: calc(50% - 12px);
@@ -166,4 +176,8 @@ button:hover {
     width: 50%;
     font-size: 12px;
   }
+}
+
+.loader.is-active {
+  display: block;
 }
